@@ -8,5 +8,5 @@ It allows you to:
 3. Set the current and the maximum life points with different commands to make it more convenient for each user.
 4. Heal or damage characters easily with a system that alerts each user every time his or her life points change. As a detail and thinking of D&D system, you can heal above maximum health to emulate temporary life points, but you cannot damage below 0.
 5. Automatically change the current life points of each character to their maximum life, emulating the long rests in the D&D system.
-6. Delete a character or all characters in the party.
+6. Delete a character or all characters in the party.<br />
 All this with fun visual messages.
