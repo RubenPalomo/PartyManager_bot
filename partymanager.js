@@ -64,6 +64,7 @@ const insertCharacter = (chatId, user, characterName) => {
 const changeLife = (chatId, typeOfTarget, target, difference) => {
   if (typeOfTarget === "user" && !target.includes("@")) target = `@${target}`;
   let life;
+
   client.connect(async (err) => {
     await client
       .db("TelegramBots")
@@ -272,21 +273,18 @@ bot.onText(/^\/add(.+)/, (msg, match) => {
 });
 
 // Command to get all the characters' data
-bot.onText(/^\/party/, (msg) => {
-  getData(msg.chat.id);
-});
+bot.onText(/^\/party/, (msg) => getData(msg.chat.id));
 
 // Command to delete a character
 bot.onText(/^\/kill(.+)/, (msg, match) => {
   const data = match[1].trim();
+
   deleteCharacter(msg.chat.id, "user", data);
   deleteCharacter(msg.chat.id, "characterName", data);
 });
 
 // Command to delete the current party
-bot.onText(/^\/reset/, (msg) => {
-  reset(msg.chat.id);
-});
+bot.onText(/^\/reset/, (msg) => reset(msg.chat.id));
 
 // Command to set the current character's life points
 bot.onText(/^\/setLifePoints(.+)/, (msg, match) => {
@@ -348,6 +346,7 @@ bot.onText(/^\/heal(.+)|\/damage(.+)/, (msg, match) => {
   const action = data[0];
   const target = data[1];
   let lifeDifference = parseInt(data[2]);
+
   if (isNaN(lifeDifference))
     bot.sendMessage(
       msg.chat.id,
