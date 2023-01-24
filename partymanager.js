@@ -131,17 +131,17 @@ const rest = (chatId) => {
               },
               { $set: { lifePoints: character.maxLifePoints } }
             )
-            .then(() =>
-              bot.sendMessage(
-                chatId,
-                "The party take a long break and recovers its life points 😴🌙"
-              )
-            )
             .catch((error) =>
               bot.sendMessage(chatId, `There was an error: ${error}`)
             );
         });
       })
+      .then(() =>
+        bot.sendMessage(
+          chatId,
+          "The party take a long break and recovers its life points 😴🌙"
+        )
+      )
       .catch((error) =>
         bot.sendMessage(chatId, `There was an error: ${error}`)
       );
@@ -151,7 +151,7 @@ const rest = (chatId) => {
 
 // Function to get all the data of the DB
 const getData = (chatId) => {
-  var data = "⚔️PARTY⚔️\n";
+  let data = "⚔️PARTY⚔️\n";
   const space = "\t\t\t\t\t";
 
   client.connect(async (err) => {
